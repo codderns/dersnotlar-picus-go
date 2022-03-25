@@ -1,8 +1,8 @@
 package main
 
 /*GO'da birçok keywords vardır, break, continue, const, default, defer, struct, switch, var, for vs...
-Bu anahtar kelimelerden biri de interface'dir. 
- */
+Bu anahtar kelimelerden biri de interface'dir.
+*/
 
 // import (
 // 	"fmt"
@@ -10,8 +10,8 @@ Bu anahtar kelimelerden biri de interface'dir.
 
 // func main() {
 // 	var i interface{} // i'nin türü interface olduktan sonra i'yi birçok farklı türdeki değere atayabildik
-// 	/*Bazı koşullarda bu durum olabilir. Değişken interface olarak tanımlanırsa istenildiği gibi 
-// 	kullanılabilir. 
+// 	/*Bazı koşullarda bu durum olabilir. Değişken interface olarak tanımlanırsa istenildiği gibi
+// 	kullanılabilir.
 // 	*/
 // 	i = 20
 // 	i = "hello"
@@ -22,7 +22,6 @@ Bu anahtar kelimelerden biri de interface'dir.
 
 // 	fmt.Println(i) // satırda son alınan değer neyse ona eşittir i.
 // }
-
 
 ////////////////////////////////////////////****************////////////////////////////////////////////
 ////////////////////****************////////////////////////////////****************////////////////////
@@ -35,7 +34,7 @@ Bu anahtar kelimelerden biri de interface'dir.
 // 		"encoding/json"
 // 	)
 
-// /* Bir JSON dosyasında key veya value değerleri int, string, dizi veya bool olabilir. Bunları aynı 
+// /* Bir JSON dosyasında key veya value değerleri int, string, dizi veya bool olabilir. Bunları aynı
 // değişken için farklı değerler alması olanaksız gelir GO'da eğer interface olmasaydı. Interface tanımı
 // ile bu sorun çözülür. */
 
@@ -47,19 +46,19 @@ Bu anahtar kelimelerden biri de interface'dir.
 // 	}
 
 // //json.Unmarshal json dosyası içindeki datayı alır ve okur ve üsteki map'in içinde gömer.
-// 								//burada & ile ref değere pass edilmiş. Eğer referans etmezsek 
-// // çalıştırıncaboş bir data göreceğiz. Biz datanın adresini veriyoruz, git buranın adresinin olduğu 
+// 								//burada & ile ref değere pass edilmiş. Eğer referans etmezsek
+// // çalıştırıncaboş bir data göreceğiz. Biz datanın adresini veriyoruz, git buranın adresinin olduğu
 // // value'yü al değiştir. //error varsa panic, yoksa devam.
 // 	if err := json.Unmarshal(contents, &data); err != nil { //bu tarz yukarıdaki gibinin daha şekillisi
-// 		panic(err)  
+// 		panic(err)
 // 	}
 
 // 	fmt.Println(data)
-// 	/*Çıktı: 
+// 	/*Çıktı:
 // map[age:21 details:map[firstKey:firstValue secondKey:secondValue] isFemale:false name:Mustafa test:123]*/
 
 // 	fmt.Println(data["age"].(float64) + 1)//age'de 21 değerini 22 yapmak için o key'in value'sünün türünü
-// 	//yazmak gerekir. // eğer int verse idik panic verir. GO işini garantiye alan dil olduğu için 
+// 	//yazmak gerekir. // eğer int verse idik panic verir. GO işini garantiye alan dil olduğu için
 // 	// anlayabileceği ölçeği geniş tutar. O yüzden sayı varsa float64 olarak anlar.
 
 // 	fmt.Println(len(data["name"].(string)))// aynı şekilde value'de değişiklik için türünü belirtmek lazım
@@ -92,15 +91,14 @@ Bu anahtar kelimelerden biri de interface'dir.
 ////////////////////****************////////////////////////////////****************////////////////////
 ////////////////////////////////////////////****************////////////////////////////////////////////
 
-
 //  import (
-// 	"fmt" 
+// 	"fmt"
 // 	"io/ioutil"
 // 	"encoding/json"
 // 	)
 
-// type Person struct { /*Hep aynı yapıda ise json, data.json'u struct'a çevirdik 
-// https://json2struct.mervine.net/ bu siteden. */ 
+// type Person struct { /*Hep aynı yapıda ise json, data.json'u struct'a çevirdik
+// https://json2struct.mervine.net/ bu siteden. */
 // 	Name     string `json:"name"`
 // 	Age      int    `json:"age"`
 // 	IsFemale bool   `json:"isFemale"`
@@ -114,7 +112,7 @@ Bu anahtar kelimelerden biri de interface'dir.
 // 	contents,err := ioutil.ReadFile("data.json") //json dosyasını oku
 // 	if err != nil{
 // 		panic(err)
-// 	}			
+// 	}
 // 	if err:= json.Unmarshal(contents,data); err != nil{ // byte et json'u. &data yazsa idik yukarıdaki
 // 	// &Person, Person şeklinde olacaktı
 // 		panic(err)
@@ -127,12 +125,12 @@ Bu anahtar kelimelerden biri de interface'dir.
 // 		panic(err)
 // 	}
 // 	fmt.Println(byteData) /*Çıktı:
-// 	[123 34 110 97 109 101 34 58 34 77 117 115 116 97 102 97 34 44 34 97 103 101 34 58 50 49 44 34 105 
-// 	115 70 101 109 97 108 101 34 58 102 97 108 115 101 44 34 100 101 116 97 105 108 115 34 58 123 34 
-// 	102 105 114 115 116 75 101 121 34 58 34 102 105 114 115 116 86 97 108 117 101 34 44 34 115 101 99 
+// 	[123 34 110 97 109 101 34 58 34 77 117 115 116 97 102 97 34 44 34 97 103 101 34 58 50 49 44 34 105
+// 	115 70 101 109 97 108 101 34 58 102 97 108 115 101 44 34 100 101 116 97 105 108 115 34 58 123 34
+// 	102 105 114 115 116 75 101 121 34 58 34 102 105 114 115 116 86 97 108 117 101 34 44 34 115 101 99
 // 	111 110 100 75 101 121 34 58 34 115 101 99 111 110 100 86 97 108 117 101 34 125 125]*/
-// 	fmt.Println(string(byteData)) 
-// 	// Çıktı: 
+// 	fmt.Println(string(byteData))
+// 	// Çıktı:
 // //{"name":"Mustafa","age":21,"isFemale":false,"details":{"firstKey":"firstValue","secondKey":"secondValue"}}
 // }
 
@@ -144,17 +142,16 @@ Bu anahtar kelimelerden biri de interface'dir.
 //Genel Bilgi Not: Interface struct'a bağlanır, struct'un metodu oluşturulur. Arada interface bir layer
 // olarak düşün.
 
-
 // Soyut tip interface
 
 import "fmt"
 
- //  	Direk struct ile ilgilidir. Üstteki örneklerdeki interface datanın ne türünde olduğuyla alakalı
+//  	Direk struct ile ilgilidir. Üstteki örneklerdeki interface datanın ne türünde olduğuyla alakalı
 
- // buradaki interface farklı bir amacı vardır. Struct'ın davranışı ile alakalıdır. 
+// buradaki interface farklı bir amacı vardır. Struct'ın davranışı ile alakalıdır.
 type Animal interface {
-	Sound() interface{}  // Sound() fonks ve Eat() davranışları var Animal'ın. // alttaki return türleri
-// farklı olduğu için Sound'un signature'ı interface ve alttakilerde de belirtimeli Sound kullanılanlarda
+	Sound() interface{} // Sound() fonks ve Eat() davranışları var Animal'ın. // alttaki return türleri
+	// farklı olduğu için Sound'un signature'ı interface ve alttakilerde de belirtimeli Sound kullanılanlarda
 	Eat(bool) string
 	// Aşağıdaki diğer struct'ları buna implement ederiz
 }
@@ -162,6 +159,7 @@ type Animal interface {
 type Dog struct {
 }
 
+// Dog Sound metodu almış. Bu artık Dog aynı zamanda Animal tipinde bir interface'dir. GO bunu anlar.
 func (d Dog) Sound() interface{} {
 	return 123
 }

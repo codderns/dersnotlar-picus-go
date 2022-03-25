@@ -1,8 +1,10 @@
 package main
 
+import "fmt"
+
 /*Method, struct'a bağlı olan bir fonksiyondur. Sadece struct için kullanılır.*/
 
-import "fmt"
+//import "fmt"
 
 ////////////////////////////////////////////****************////////////////////////////////////////////
 ////////////////////****************////////////////////////////////****************////////////////////
@@ -18,7 +20,7 @@ import "fmt"
 
 // //aşağıdaki kuralda yazılır
 // 						 //döndürdüğü tür
-// //func (structname) functionName() string
+// //  (structname) functionName() string
 // func (p Person) String() string {
 // 	return fmt.Sprintf("%s %s, age %d", p.FirstName, p.LastName, p.Age)
 // 				//Sprintf formatlanmış string
@@ -37,7 +39,7 @@ import "fmt"
 // 	fmt.Println(person.String()) // structadi.fonksiyonu
 // 	fmt.Println(person.ChangeAge())
 
-// 	// Bu başka bir olay. Struct içinde bir func var. Bu struct'a ait bir mehod gibi. 
+// 	// Bu başka bir olay. Struct içinde bir func var. Bu struct'a ait bir mehod gibi.
 // 	person.TestF = func() bool {
 // 		return false
 // 	}
@@ -47,7 +49,6 @@ import "fmt"
 ////////////////////****************////////////////////////////////****************////////////////////
 ////////////////////****************////////////////////////////////****************////////////////////
 ////////////////////////////////////////////****************////////////////////////////////////////////
-
 
 // type Adder struct {
 // 	start int
@@ -62,7 +63,7 @@ import "fmt"
 
 // func main() {
 // 	myAdder := Adder{start: 10} // bir struct oluşturduk Adder'dan
-// 	fmt.Println(myAdder.AddTo(5)) 
+// 	fmt.Println(myAdder.AddTo(5))
 // }
 
 ////////////////////////////////////////////****************////////////////////////////////////////////
@@ -70,50 +71,50 @@ import "fmt"
 ////////////////////****************////////////////////////////////****************////////////////////
 ////////////////////////////////////////////****************////////////////////////////////////////////
 
+type Employee struct {
+	Name string
+	ID   string
+}
 
-// type Employee struct {
-// 	Name string
-// 	ID   string
-// }
+func (e Employee) Description() string {
+	return fmt.Sprintf("%s (%s)", e.Name, e.ID)
+}
 
-// func (e Employee) Description() string {
-// 	return fmt.Sprintf("%s (%s)", e.Name, e.ID)
-// }
+type Manager struct {
+	Employee            // Employee struct'ını buraya al (içine gömdük)
+	Reports  []Employee // manager altında çalışanların rapor dizisi
+}
 
-// type Manager struct {
-// 	Employee  // Employee struct'ını buraya al (içine gömdük)
-// 	Reports []Employee  // manager altında çalışanların rapor dizisi
-// }
+// Manager'ın kendi methodu var burada
+func (m Manager) FindNewEmployees() []Employee {
+	// do business logic
+	return []Employee{}
+}
 
-// // Manager'ın kendi methodu var burada
-// func (m Manager) FindNewEmployees() []Employee {
-// 	// do business logic
-// 	return []Employee{}
-// }
-
-// func main() {
-// 	m := Manager{
-// 		Employee: Employee{ // Burada bir ayrı struct var. 83. satırdaki struct yani. 
-// 			//Employee bilgisi yani ayrıca.
-// 			Name: "Bob Bobson", // manager hakkında bilgi
-// 			ID:   "12345",
-// 		},
-// 		Reports: []Employee{
-// 			{Name: "Ahmet", ID: "123"}, // manager altında çalışanların bilgisi
-// 			{Name: "Fatma", ID: "9659"},
-// 		},
-// 	}
-// 	fmt.Println(m.ID)
-// 	fmt.Println(m.Description()) //manager'ın description diye bir methodu aslında yok. Manager'ın 
-// 	//description metodu aslında Employee içindir. Manager aynı zamanda Employee'ı embed edip içine 
-// 	// aldığı için Employee'ın func metoduna da erişim sağlayabiliyor.
-// }
+func main() {
+	m := Manager{
+		Employee: Employee{ // Burada bir ayrı struct var. 83. satırdaki struct yani.
+			//Employee bilgisi yani ayrıca.
+			Name: "Bob Bobson", // manager hakkında bilgi
+			ID:   "12345",
+		},
+		Reports: []Employee{
+			{Name: "Ahmet", ID: "123"}, // manager altında çalışanların bilgisi
+			{Name: "Fatma", ID: "9659"},
+		},
+	}
+	fmt.Println(m.ID)            //12345
+	fmt.Println(m.Description()) //manager'ın description diye bir methodu aslında yok. Manager'ın
+	//description metodu aslında Employee içindir. Manager aynı zamanda Employee'ı embed edip içine
+	// aldığı için Employee'ın func metoduna da erişim sağlayabiliyor. // Bob Bobson (12345)
+	fmt.Println(m.Employee) // {Bob Bobson 12345}
+	fmt.Println(m.Reports)  //[{Ahmet 123} {Fatma 9659}]
+}
 
 ////////////////////////////////////////////****************////////////////////////////////////////////
 ////////////////////****************////////////////////////////////****************////////////////////
 ////////////////////****************////////////////////////////////****************////////////////////
 ////////////////////////////////////////////****************////////////////////////////////////////////
-
 
 // type Inner struct {
 // 	ID int
