@@ -1,4 +1,4 @@
-module github.com/h4yfans/go-patika.dev
+module github.com/nsgnd/dersnotlar-picus-go
 
 go 1.17
 

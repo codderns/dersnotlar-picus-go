@@ -1,0 +1,50 @@
+Her go projesinin bir tane dependency dosyası olmalı
+Bu go.mod dosyası içinde bu projenin bağlı olduğu diğer projeleri tanımlıyoruz.
+
+https://golangbyexample.com/go-mod-sum-module/
+
+Bir proje başlatıyorsak go mod init github.com/nsgnd/dersnotlar-picus-go 
+go sum'a aktarılır s
+
+Son kısmı proje adı
+
+oluşur
+
+bir paket eklemek istiyorsak projemize 
+                                // uuid paketi 
+                    bize yazar bunu, Dependency budur
+go get github.com/google/uuid
+
+
+İki dosya var: go.modvego.sum
+
+go.modDosya modülünün tanımlar modül yolunu da kök dizini için kullanılan import yolu, ve bunun 
+bağımlılık gereksinimlerini başarılı bir yapı için gerekli diğer modülleri bulunmaktadır. 
+Her bağımlılık gereksinimi bir modül yolu ve belirli bir anlamsal sürüm olarak yazılır .
+
+Özet olarak, go.modtüm belirli bağımlılık modülü sürümleri listelenirken go.sum, 
+belirli modül sürümlerinin içeriğinin beklenen kriptografik sağlama toplamlarıdır. 
+go.modve go.sumsürüm kontrolü içine kontrol edilmelidir.
+
+Sahip go.modolmanın amacı go.sum, sağlama toplamları için ek bir doğrulama sağlamak olduğu için , 
+yalnızca bu öğreticide odaklanacağız .
+
+
+Overview
+
+Module is go support for dependency management. A module by definition is a collection of related packages 
+with go.mod at its root.  
+
+The go.mod file defines the
+
+    Module import path.
+
+    The version of go with which the module is created
+
+    Dependency requirements of the module for a successful build. It defines both project’s 
+    dependencies requirement and also locks them to their correct version.
+
+
+
+
+
