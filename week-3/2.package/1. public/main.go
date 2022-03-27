@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/nsgnd/dersnotlar-picus-go/week-3/2. package/1. public/formatter"
-	"github.com/nsgnd/dersnotlar-picus-go/week-3/2. package/1. public/maths"
+	"github.com/nsgnd/dersnotlar-picus-go/week-3/2.package/1. public/formatter"
+	"github.com/nsgnd/dersnotlar-picus-go/week-3/2.package/1. public/maths"
 )
 
 func main() {

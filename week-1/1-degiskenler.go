@@ -1,6 +1,7 @@
 package main
 
 import "fmt"
+
 func main() {
 	//TEMEL VERİ TİPLERİ İÇİN BAKINIZ : BASIC TYPES (BUILT-IN TYPES FOR GOLANG)
 
@@ -18,9 +19,9 @@ func main() {
 	//var str = "10"
 	//var Integer = int(str) //cannot convert str (type string) to type int
 
-	var integer int64= 45
+	var integer int64 = 45
 	var yeni = int32(integer)
-	fmt.Printf("%T \n",yeni) //int32 olduğu görülür.
+	fmt.Printf("%T \n", yeni) //int32 olduğu görülür.
 
 	// Integer Types
 	var num int64 = 10
@@ -31,13 +32,12 @@ func main() {
 
 	//var vs := // hatalı
 	var xa int = 10
-//	var x = 10 // bu şekilde de atama olabilir
-//	var x int // bir kez deklare edilir bir değişken
+	//	var x = 10 // bu şekilde de atama olabilir
+	//	var x int // bir kez deklare edilir bir değişken
 	fmt.Println(xa)
 
-//	var ya float64 = 20
-	ya:=20 
-
+	//	var ya float64 = 20
+	ya := 20
 
 	// Çoklu Değişken Tanımlama
 
@@ -58,7 +58,7 @@ func main() {
 
 	//Zero Values
 	//numerik değerlerin go'daki değeri sıfırdır :
-	var zeroint int 
+	var zeroint int
 	fmt.Println(zeroint) //varsayılan olarak sıfır alırlar
 
 	var zerostring string
@@ -66,7 +66,6 @@ func main() {
 
 	var zerobool bool
 	fmt.Println(zerobool) // varsayılan olarak false
-
 
 	// Const asla değiştirilemez değişkenlerdir.
 	//const x float64 = 10
